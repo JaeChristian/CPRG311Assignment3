@@ -72,6 +72,30 @@ class BSTreeTests {
 		}
 	}
 	
+	@Test
+	void testInorderIterator() {
+		addSet();
+		Iterator iterate = tree.inorderIterator();
+		System.out.println("Inorder");
+		while(iterate.hasNext()) {
+			System.out.println(iterate.next());
+		}
+	}
+	
+	@Test
+	void testContains() throws TreeException {
+		addSet();
+		assertTrue(tree.contains(3));
+		assertFalse(tree.contains(10));
+	}
+	
+	@Test
+	void testSearch() throws TreeException {
+		addSet();
+		BSTreeNode searchedNode = tree.search(1);
+		assertEquals(searchedNode.getRight().getElement(), 2);
+	}
+	
 	private void addSet() {
 		tree.add(3);
 		tree.add(4);

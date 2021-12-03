@@ -47,14 +47,38 @@ public class BSTree<E extends Comparable<? super E>> implements BSTreeADT{
 
 	@Override
 	public boolean contains(Comparable entry) throws TreeException {
-		// TODO Auto-generated method stub
-		return false;
+		return search(entry) != null;
 	}
 
 	@Override
 	public BSTreeNode search(Comparable entry) throws TreeException {
-		// TODO Auto-generated method stub
-		return null;
+		if(root == null) {
+			return null;
+		}
+		
+		BSTreeNode<E> currentNode = root;
+		while(true) {
+			if(entry.compareTo(currentNode.getElement()) < 0) {
+				//if newEntry is less than the currentNode then traverse to the left
+				//if the left node is null, then there is no match
+				if(currentNode.getLeft() != null) {
+					currentNode = currentNode.getLeft();
+				} else {
+					return null;
+				}
+			} else if(entry.compareTo(currentNode.getElement()) > 0){
+				//if newEntry is more than the currentNode then traverse to the right
+				//if the right node is null, then there is no match
+				if(currentNode.getRight() != null) {
+					currentNode = currentNode.getRight(); 
+				} else {
+					return null;
+				}
+			} else {
+				//if newEntry is equal to the currentNode, don't add it (duplicates not allowed)
+				return currentNode;
+			}
+		}
 	}
 
 	@Override
@@ -94,8 +118,7 @@ public class BSTree<E extends Comparable<? super E>> implements BSTreeADT{
 
 	@Override
 	public Iterator inorderIterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new inorderIterator(root);
 	}
 
 	@Override
