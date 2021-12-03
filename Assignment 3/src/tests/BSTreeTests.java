@@ -56,6 +56,7 @@ class BSTreeTests {
 	void testPreorderIterator() {
 		addSet();
 		Iterator iterate = tree.preorderIterator();
+		System.out.println("Preorder");
 		while(iterate.hasNext()) {
 			System.out.println(iterate.next());
 		}
@@ -65,6 +66,7 @@ class BSTreeTests {
 	void testPostorderIterator() {
 		addSet();
 		Iterator iterate = tree.postorderIterator();
+		System.out.println("Postorder");
 		while(iterate.hasNext()) {
 			System.out.println(iterate.next());
 		}

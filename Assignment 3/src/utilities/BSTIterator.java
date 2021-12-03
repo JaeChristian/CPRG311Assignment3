@@ -11,7 +11,7 @@ public class BSTIterator<E extends Comparable<? super E>> implements Iterator<E>
 	protected Queue<BSTreeNode<E>> queue = new LinkedList<>();
 	@Override
 	public boolean hasNext() {
-		return !queue.isEmpty();
+		return queue.peek() != null;
 	}
 
 	@Override
