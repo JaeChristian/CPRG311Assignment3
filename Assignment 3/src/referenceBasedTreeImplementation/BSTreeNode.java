@@ -70,6 +70,10 @@ public class BSTreeNode<E extends Comparable<? super E>> implements Serializable
 		}
 	}
 	
+	public int getNumberNodes() {
+		return getNumberNodes(this);
+	}
+	
 	public int getHeight() {
 		return getHeight(this);
 	}
@@ -90,5 +94,16 @@ public class BSTreeNode<E extends Comparable<? super E>> implements Serializable
 			return rightHeight + 1;
 		}
 	} 
+	
+	private int getNumberNodes(BSTreeNode<E> toGet) {
+		if(toGet == null) {
+			System.out.println("0 nodes");
+			return 0;
+		}
+		else {
+			System.out.println("more than 0 nodes");
+			return getNumberNodes(toGet.getLeft()) + 1 + getNumberNodes(toGet.getRight());
+		}
+	}
 	
 }
